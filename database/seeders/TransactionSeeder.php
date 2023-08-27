@@ -17,39 +17,77 @@ class TransactionSeeder extends Seeder
             'product_id' => 1,
             'date' => '2019-08-27',
             'qty' => 52,
-            'total' => 20000
+            'total' => 520000
+        ]);
+
+        Transaction::create([
+            'product_id' => 1,
+            'date' => '2020-08-27',
+            'qty' => 46,
+            'total' => 460000
+        ]);
+
+        Transaction::create([
+            'product_id' => 1,
+            'date' => '2021-08-27',
+            'qty' => 60,
+            'total' => 600000
+        ]);
+
+        Transaction::create([
+            'product_id' => 1,
+            'date' => '2022-08-27',
+            'qty' => 64,
+            'total' => 640000
+        ]);
+
+        Transaction::create([
+            'product_id' => 1,
+            'date' => '2023-08-27',
+            'qty' => 72,
+            'total' => 720000
+        ]);
+
+        Transaction::create([
+            'product_id' => 1,
+            'date' => '2018-08-27',
+            'qty' => 64,
+            'total' => 640000
+        ]);
+
+        Transaction::create([
+            'product_id' => 2,
+            'date' => '2019-08-27',
+            'qty' => 52,
+            'total' => 520000
         ]);
 
         Transaction::create([
             'product_id' => 2,
             'date' => '2020-08-27',
             'qty' => 46,
-            'total' => 10000
+            'total' => 460000
         ]);
 
         Transaction::create([
-            'product_id' => 3,
+            'product_id' => 2,
             'date' => '2021-08-27',
             'qty' => 60,
-            'total' => 30000
+            'total' => 600000
         ]);
+
         Transaction::create([
-            'product_id' => 3,
+            'product_id' => 2,
             'date' => '2022-08-27',
             'qty' => 64,
-            'total' => 30000
+            'total' => 640000
         ]);
+
         Transaction::create([
-            'product_id' => 3,
+            'product_id' => 2,
             'date' => '2023-08-27',
             'qty' => 72,
-            'total' => 30000
-        ]);
-        Transaction::create([
-            'product_id' => 3,
-            'date' => '2018-08-27',
-            'qty' => 64,
-            'total' => 30000
+            'total' => 720000
         ]);
     }
 }
