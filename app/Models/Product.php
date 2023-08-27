@@ -10,4 +10,9 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'price', 'photo'];
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

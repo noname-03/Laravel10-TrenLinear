@@ -41,6 +41,15 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="{{ route('transaction.index') }}" class="nav-link @yield('transaction')">
+                        <i class="nav-icon fas fa-shopping-cart"></i>
+                        <p>
+                            Transaksi
+                        </p>
+                    </a>
+                </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

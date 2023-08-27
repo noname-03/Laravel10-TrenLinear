@@ -32,7 +32,7 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'price' => 'required|numeric',
+            'price' => 'required',
             'file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:1028'
         ]);
 
@@ -69,7 +69,7 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'price' => 'required|numeric',
+            'price' => 'required',
         ]);
 
         $product = Product::findOrFail($id);

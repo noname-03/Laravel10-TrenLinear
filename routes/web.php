@@ -18,4 +18,5 @@ Auth::routes([
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('product', App\Http\Controllers\ProductController::class);
+    Route::resource('transaction', App\Http\Controllers\TransactionController::class);
 });
