@@ -54,10 +54,6 @@
                                                 <td style="text-align: center;">
                                                     <div class="btn-group" role="group" aria-label="Basic example">
                                                         <a href="{{ route('transaction.edit', $item->id) }}"
-                                                            class="btn btn-sm btn-outline-info">
-                                                            <i class="fas fa-calculator"></i>
-                                                        </a>
-                                                        <a href="{{ route('transaction.edit', $item->id) }}"
                                                             class="btn btn-sm btn-outline-secondary">
                                                             <i class="fas fa-edit"></i>
                                                         </a>

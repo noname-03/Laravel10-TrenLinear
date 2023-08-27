@@ -6,13 +6,18 @@
     <div class="content-wrapper" style="min-height: 1345.31px;">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>Formulir Produk</h1>
-                    </div>
-                </div>
-            </div><!-- /.container-fluid -->
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Formulir Data Produk</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('product.index') }}">Data Produk</a></li>
+                        <li class="breadcrumb-item active">Tambah Data Produk</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
         </section>
 
         <!-- Main content -->

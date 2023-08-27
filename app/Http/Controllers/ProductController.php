@@ -50,7 +50,74 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        //get product with transaction and sum of quantity by year
+        $product = Product::with([
+            'transactions' => function ($query) {
+                $query->selectRaw('product_id, year(date) as year, sum(total) as total_quantity')
+                    ->groupBy('product_id', 'year');
+            }
+        ])->findOrFail($id);
+
+        $data_json = $product->transactions;
+        // dd($data_json);
+
+        // Pastikan data transaksi tidak kosong
+        if (!$data_json->isEmpty()) {
+            // Konversi koleksi Eloquent menjadi array
+            $transaction_array = $data_json->toArray();
+
+            // Urutkan array berdasarkan tahun secara descending
+            usort($transaction_array, function ($a, $b) {
+                return $b['year'] - $a['year'];
+            });
+
+            // Ambil tahun terakhir
+            $last_year = $transaction_array[0]['year'];
+
+            // Tambahkan 1 ke tahun terakhir
+            $next_year = $last_year + 1;
+
+            // Cetak tahun terakhir dan tahun setelahnya
+            // echo "Last Year: $last_year, Next Year: $next_year";
+        } else {
+            // Kasus jika tidak ada data transaksi
+            $next_year = 0;
+            // echo "No transaction data available." . $next_year;
+        }
+
+
+
+        // Konversi JSON menjadi array PHP
+        $data = json_decode($data_json, true);
+
+        if (count($data) > 2) {
+            $tren_linear = $this->calculate_linear_trend($data);
+        } else {
+            $tren_linear = 0;
+        }
+
+        return view('pages.product.show', compact('product', 'tren_linear', 'next_year'));
+    }
+
+    function calculate_linear_trend($data)
+    {
+        $n = count($data);
+        $sum_x = 0;
+        $sum_y = 0;
+        $sum_xy = 0;
+        $sum_x_squared = 0;
+
+        foreach ($data as $point) {
+            $sum_x += $point['year'];
+            $sum_y += $point['total_quantity'];
+            $sum_xy += $point['year'] * $point['total_quantity'];
+            $sum_x_squared += $point['year'] * $point['year'];
+        }
+
+        $m = ($n * $sum_xy - $sum_x * $sum_y) / ($n * $sum_x_squared - $sum_x * $sum_x);
+        $b = ($sum_y - $m * $sum_x) / $n;
+
+        return $m * (end($data)['year'] + 1) + $b;
     }
 
     /**
