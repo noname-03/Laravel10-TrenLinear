@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>E-Kasir | Login</title>
 
-    <link rel="icon" type="image/png" href="{{ asset('admin/dist/images/logo.jpg') }}" sizes="16x16">
+    <link rel="icon" type="image/png" href="{{ asset('admin/dist/images/Logo.jpg') }}" sizes="16x16">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -23,7 +23,7 @@
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <img src="{{ asset('admin/dist/images/logo.jpg') }}" alt="AdminLTE Logo"
+                <img src="{{ asset('admin/dist/images/Logo.jpg') }}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-2" style="opacity: .8;width:70%">
                 <p class="h1">Aplikasi Sirop Buah Kesambi</p>
             </div>
