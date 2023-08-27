@@ -21,7 +21,7 @@
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
-        {{--
+
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
@@ -31,58 +31,41 @@
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>{{ $schedules }}</h3>
+                                <h3>{{ $products }}</h3>
 
-                                <p>Jadwal</p>
+                                <p>Produk</p>
                             </div>
                             <div class="icon">
-                                <i class="fas fa-calendar"></i>
+                                <i class="fas fa-box-open"></i>
                             </div>
-                            <a href="{{ route('schedule.index') }}" class="small-box-footer">More info <i
+                            <a href="{{ route('product.index') }}" class="small-box-footer">More info <i
                                     class="fas
                                 fa-arrow-circle-right">
                                 </i></a>
                         </div>
                     </div>
-                    @role('admin')
-                        <!-- ./col -->
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-success">
-                                <div class="inner">
-                                    <h3>{{ $classEducation }}</h3>
-                                    <p>Kelas</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="nav-icon fas fa-graduation-cap"></i>
-                                </div>
-                                <a href="{{ route('classEducation.index') }}" class="small-box-footer">More info <i
-                                        class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-warning">
-                                <div class="inner">
-                                    <h3>{{ $user }}</h3>
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3>{{ $transaction }}</h3>
 
-                                    <p>User Registrations</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="nav-icon fas fa-user"></i>
-                                </div>
-                                <a href="{{ route('user.index') }}" class="small-box-footer">More info <i
-                                        class="fas fa-arrow-circle-right"></i></a>
+                                <p>Transaksi</p>
                             </div>
+                            <div class="icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <a href="{{ route('transaction.index') }}" class="small-box-footer">More info <i
+                                    class="fas
+                                fa-arrow-circle-right">
+                                </i></a>
                         </div>
-                        <!-- ./col -->
-                    @endrole
+                    </div>
                 </div>
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
         </section>
-        <!-- /.content --> --}}
+        <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
 @endsection
