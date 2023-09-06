@@ -59,7 +59,6 @@ class ProductController extends Controller
         ])->findOrFail($id);
 
         $data_json = $product->transactions;
-        // dd($data_json);
 
         // Pastikan data transaksi tidak kosong
         if (!$data_json->isEmpty()) {
@@ -77,15 +76,10 @@ class ProductController extends Controller
             // Tambahkan 1 ke tahun terakhir
             $next_year = $last_year + 1;
 
-            // Cetak tahun terakhir dan tahun setelahnya
-            // echo "Last Year: $last_year, Next Year: $next_year";
         } else {
             // Kasus jika tidak ada data transaksi
             $next_year = 0;
-            // echo "No transaction data available." . $next_year;
         }
-
-
 
         // Konversi JSON menjadi array PHP
         $data = json_decode($data_json, true);
