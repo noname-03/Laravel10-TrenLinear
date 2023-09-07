@@ -50,6 +50,17 @@
                     </a>
                 </li>
 
+                @role('admin')
+                    <li class="nav-item">
+                        <a href="{{ route('user.index') }}" class="nav-link @yield('user')">
+                            <i class="nav-icon fas fa-user"></i>
+                            <p>
+                                User
+                            </p>
+                        </a>
+                    </li>
+                @endrole
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
