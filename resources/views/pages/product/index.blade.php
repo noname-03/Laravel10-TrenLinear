@@ -29,12 +29,14 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
-                                <a href="{{ route('product.create') }}" type="button" class="btn btn-primary btn-sm"><i
-                                        class="fas fa-plus"></i> Tambah
-                                    Data</a>
-                            </div>
-                            <!-- /.card-header -->
+                            @role('admin')
+                                <div class="card-header">
+                                    <a href="{{ route('product.create') }}" type="button" class="btn btn-primary btn-sm"><i
+                                            class="fas fa-plus"></i> Tambah
+                                        Data</a>
+                                </div>
+                                <!-- /.card-header -->
+                            @endrole
                             <div class="card-body">
                                 <table id="example3" class="table table-bordered table-striped">
                                     <thead>
@@ -62,15 +64,17 @@
                                                             class="btn btn-sm btn-outline-info">
                                                             <i class="fas fa-calculator"></i>
                                                         </a>
-                                                        <a href="{{ route('product.edit', $item->id) }}"
-                                                            class="btn btn-sm btn-outline-secondary">
-                                                            <i class="fas fa-edit"></i>
-                                                        </a>
-                                                        <button type="submit"
-                                                            onclick="confirmDelete('{{ route('product.destroy', $item->id) }}')"
-                                                            class="btn btn-sm btn-outline-danger delete-button">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
+                                                        @role('admin')
+                                                            <a href="{{ route('product.edit', $item->id) }}"
+                                                                class="btn btn-sm btn-outline-secondary">
+                                                                <i class="fas fa-edit"></i>
+                                                            </a>
+                                                            <button type="submit"
+                                                                onclick="confirmDelete('{{ route('product.destroy', $item->id) }}')"
+                                                                class="btn btn-sm btn-outline-danger delete-button">
+                                                                <i class="fas fa-trash"></i>
+                                                            </button>
+                                                        @endrole
                                                     </div>
                                                     {{-- </form> --}}
 

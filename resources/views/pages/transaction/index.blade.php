@@ -29,12 +29,14 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
-                                <a href="{{ route('transaction.create') }}" type="button" class="btn btn-primary btn-sm"><i
-                                        class="fas fa-plus"></i> Tambah
-                                    Data</a>
-                            </div>
-                            <!-- /.card-header -->
+                            @role('admin')
+                                <div class="card-header">
+                                    <a href="{{ route('transaction.create') }}" type="button" class="btn btn-primary btn-sm"><i
+                                            class="fas fa-plus"></i> Tambah
+                                        Data</a>
+                                </div>
+                                <!-- /.card-header -->
+                            @endrole
                             <div class="card-body">
                                 <table id="example3" class="table table-bordered table-striped">
                                     <thead>
@@ -44,7 +46,9 @@
                                             <th>Tanggal</th>
                                             <th>Jumlah</th>
                                             <th>Total</th>
-                                            <th style="width: 5%">Action</th>
+                                            @role('admin')
+                                                <th style="width: 5%">Action</th>
+                                            @endrole
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -55,20 +59,22 @@
                                                 <td>{{ $item->date }}</td>
                                                 <td>{{ $item->qty }}</td>
                                                 <td>@currency($item->total)</td>
-                                                <td style="text-align: center;">
-                                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                                        <a href="{{ route('transaction.edit', $item->id) }}"
-                                                            class="btn btn-sm btn-outline-secondary">
-                                                            <i class="fas fa-edit"></i>
-                                                        </a>
-                                                        <button type="submit"
-                                                            onclick="confirmDelete('{{ route('transaction.destroy', $item->id) }}')"
-                                                            class="btn btn-sm btn-outline-danger delete-button">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
-                                                    </div>
-                                                    {{-- </form> --}}
-                                                </td>
+                                                @role('admin')
+                                                    <td style="text-align: center;">
+                                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                                            <a href="{{ route('transaction.edit', $item->id) }}"
+                                                                class="btn btn-sm btn-outline-secondary">
+                                                                <i class="fas fa-edit"></i>
+                                                            </a>
+                                                            <button type="submit"
+                                                                onclick="confirmDelete('{{ route('transaction.destroy', $item->id) }}')"
+                                                                class="btn btn-sm btn-outline-danger delete-button">
+                                                                <i class="fas fa-trash"></i>
+                                                            </button>
+                                                        </div>
+                                                        {{-- </form> --}}
+                                                    </td>
+                                                @endrole
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -105,23 +111,36 @@
                     showConfirmButton: false, // This will hide the "OK" button
                 });
             @endif
-            $("#example3").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": [{
+            var userRole = '{{ Auth::user()->roles->pluck('name')[0] }}';
+            var buttons = [{
+                    extend: 'pdf',
+                    exportOptions: {
+                        columns: 'th:not(:last-child)'
+                    }
+                },
+                {
+                    extend: 'excel',
+                    exportOptions: {
+                        columns: 'th:not(:last-child)'
+                    }
+                }
+            ];
+
+            if (userRole === 'user') {
+                buttons = [{
                         extend: 'pdf',
-                        exportOptions: {
-                            columns: 'th:not(:last-child)'
-                        }
                     },
                     {
                         extend: 'excel',
-                        exportOptions: {
-                            columns: 'th:not(:last-child)'
-                        }
                     }
-                ],
+                ];
+            }
+
+            $("#example3").DataTable({
+                responsive: true,
+                lengthChange: false,
+                autoWidth: false,
+                buttons: buttons
             }).buttons().container().appendTo('#example3_wrapper .col-md-6:eq(0)');
         });
     </script>
