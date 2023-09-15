@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>E-Kasir | @yield('title')</title>
+    <title>Sirop Kesambi | @yield('title')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <link rel="icon" type="image/png" href="{{ asset('admin/dist/images/Logo.jpg') }}" sizes="16x16">

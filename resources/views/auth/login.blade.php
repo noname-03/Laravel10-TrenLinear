@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>E-Kasir | Login</title>
+    <title>Sirop Kesambi | Login</title>
 
     <link rel="icon" type="image/png" href="{{ asset('admin/dist/images/Logo.jpg') }}" sizes="16x16">
     <!-- Google Font: Source Sans Pro -->
